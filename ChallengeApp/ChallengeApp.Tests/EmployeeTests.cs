@@ -5,14 +5,12 @@ namespace ChallengeApp.Tests
     public class Tests
     {
         [Test]
-        public void WheneEmployeeCollectFourScores_ShouldCorrectResult()
+        public void WheneEmployeeCollectTwoScores_ShouldCorrectResult()
         {
             //arrange
-            var employee = new Employee("Maja", "Obuchowska",18);
-            employee.AddScore(5);
-            employee.AddScore(6);
-            employee.RemoveScore(5);
-            employee.RemoveScore(6);
+            var employee = new Employee("Maja", "Obuchowska");
+            employee.AddGrade(5);
+            employee.AddGrade(6);
 
             //act
             var result = employee.Result;
