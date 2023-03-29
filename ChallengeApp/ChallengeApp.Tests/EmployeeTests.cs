@@ -16,7 +16,7 @@ namespace ChallengeApp.Tests
             var result = employee.Result;
 
             //assert
-            Assert.AreEqual(0, result);
+            Assert.AreEqual(11, result);
         }
     }
 }
