@@ -1,10 +1,26 @@
 ﻿using ChallengeApp;
+using System;
 
 Console.WriteLine("Witamy w programie XYZ do oceny pracownikow");
 Console.WriteLine("===========================================");
 Console.WriteLine();
 
 var employee1 = new Employee("Maja", "Obuchowska");
+
+//try
+//{
+//    Employee emp = null;
+//    //var name = emp.Surname;
+//}
+//catch (Exception exception)
+//{
+//    Console.WriteLine(exception.Message);
+//}
+//finally
+//{
+//   Console.WriteLine("Finally here");
+//}
+
 
 while (true)
 {
@@ -14,8 +30,15 @@ while (true)
     {
         break;
     }
-    employee1.AddGrade(input);
+    try
+    {
+        employee1.AddGrade(input);
 
+    }
+    catch (Exception e)
+    {
+        Console.WriteLine($"Exception catched: {e.Message}");
+    }
 }
 var statistics = employee1.GetStatistics();
 Console.WriteLine($"Average: {statistics.Average}");
