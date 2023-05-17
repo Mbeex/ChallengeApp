@@ -1,14 +1,12 @@
-﻿using System.Diagnostics;
-
+﻿
 namespace ChallengeApp
 {
-    //JAK...?
-    public class Employee : IEmployee
+    public class Supervisor : IEmployee
     {
 
         private List<float> grades = new List<float>();
 
-        public Employee(string name, string surname)
+        public Supervisor(string name, string surname)
         {
             this.Surname = surname;
             this.Name = name;
@@ -30,49 +28,10 @@ namespace ChallengeApp
             }
 
         }
-
         public void AddGrade(char grade)
         {
-
-            switch (grade)
-            {
-                case 'A':
-                case 'a':
-                    this.grades.Add(100);
-                    break;
-                case 'B':
-                case 'b':
-                    this.grades.Add(80);
-                    break;
-                case 'C':
-                case 'c':
-                    this.grades.Add(60);
-                    break;
-                case 'D':
-                case 'd':
-                    this.grades.Add(40);
-                    break;
-                case 'E':
-                case 'e':
-                    this.grades.Add(20);
-                    break;
-                default:
-                    throw new Exception("Wrong letter");
-            }
-
-        }
-
-
-        public void AddGrade(string grade)
-        {
-            if (float.TryParse(grade, out float result))
-            {
-                this.AddGrade(result);
-            }
-            else
-            {
-                throw new Exception("String is not float");
-            }
+            var gradesAsFloat = (float)grade;
+            grades.Add(gradesAsFloat);
         }
 
         public void AddGrade(int grade)
@@ -81,6 +40,68 @@ namespace ChallengeApp
             this.AddGrade(gradeAsFloat);
         }
 
+        public void AddGrade(string grade)
+        {
+            switch (grade)
+            {
+                case "6":
+                    this.grades.Add(100);
+                    break;
+                case "-6":
+                case "6-":
+                    this.grades.Add(95);
+                    break;
+                case "+5":
+                case "5+":
+                    this.grades.Add(85);
+                    break;
+                case "5":
+                    this.grades.Add(80);
+                    break;
+                case "-5":
+                case "5-":
+                    this.grades.Add(75);
+                    break;
+                case "+4":
+                case "4+":
+                    this.grades.Add(65);
+                    break;
+                case "4":
+                    this.grades.Add(60);
+                    break;
+                case "-4":
+                case "4-":
+                    this.grades.Add(55);
+                    break;
+                case "+3":
+                case "3+":
+                    this.grades.Add(45);
+                    break;
+                case "3":
+                    this.grades.Add(40);
+                    break;
+                case "-3":
+                case "3-":
+                    this.grades.Add(35);
+                    break;
+                case "+2":
+                case "2+":
+                    this.grades.Add(25);
+                    break;
+                case "2":
+                    this.grades.Add(20);
+                    break;
+                case "-2":
+                case "2-":
+                    this.grades.Add(15);
+                    break;
+                case "1":
+                    this.grades.Add(0);
+                    break;
+                deafult:
+                    throw new Exception("Wrong string");
+            }
+        }
         public Statistics GetStatistics()
         {
             var statistics = new Statistics();
@@ -97,9 +118,8 @@ namespace ChallengeApp
                     statistics.Average += grade;
                 }
             }
-
             statistics.Average = statistics.Average / this.grades.Count;
-
+            
             switch (statistics.Average)
             {
                 case var average when average >= 80:
@@ -123,6 +143,3 @@ namespace ChallengeApp
 
     }
 }
-
-
-
